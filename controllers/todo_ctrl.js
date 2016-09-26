@@ -1,5 +1,6 @@
 todo.controller('TodoCtrl', ['$scope', '$window', 'todoService', function($scope, $window, todoService){
 
+  $scope.sortBy;
   $scope.newItem = {};
   $scope.showCompleted = true;
 

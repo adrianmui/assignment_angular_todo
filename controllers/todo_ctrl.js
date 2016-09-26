@@ -1,6 +1,7 @@
 todo.controller('TodoCtrl', ['$scope', '$window', function($scope, $window){
 
   $scope.newItem = {};
+  $scope.showCompleted = true;
 
   $scope.items = [
   {
@@ -26,9 +27,15 @@ todo.controller('TodoCtrl', ['$scope', '$window', function($scope, $window){
   ];
 
   $scope.clearCompleted = function() {
-    $scope.items.map( function(el) {
-      return (el.completed);
-    })
+    for (var i = $scope.items.length - 1; i >= 0; i--) {
+      if ($scope.items[i].completed){
+        $scope.items.splice(i, 1);
+      }
+    }
+  };
+
+  $scope.toggleShowCompleted = function() {
+    $scope.showCompleted = !$scope.showCompleted;
   };
 
   $scope.delete = function(item) {

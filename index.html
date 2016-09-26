@@ -19,14 +19,12 @@
 
   <br>
 
-  <button ng-click="clearCompleted()" class="btn-primary btn-lg active">
-    Clear Completed
-  </button>
+<button ng-click="toggleShowCompleted()" class="btn-outline-danger btn-lg">{{ showCompleted ? "Hide Completed" : "Show Completed" }}</button>
 
   <br>
 
   <table class="table table-inverse">
-    <tr ng-repeat="item in items">
+    <tr ng-repeat="item in items | completedFilter: showCompleted">
       <td>{{ item.text }}</td>
       <td>{{ item.dueDate | date }}</td>
       <td>{{ item.completed ? "Completed" : "Not completed" }}</td>
@@ -35,7 +33,13 @@
     </tr>
   </table>
 
+  <button ng-click="clearCompleted()" class="btn-primary btn-lg active">
+    Clear Completed
+  </button>
+
 </body>
   <script type="text/javascript" src="app.js"></script>
   <script type="text/javascript" src="controllers/todo_ctrl.js"></script>
+  <script type="text/javascript" src="filters/completed_filter.js"></script>
+  <script type="text/javascript" src="directives/list_items.js"></script>
 </html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="todo">
+<head>
+  <title>Angular To-Do</title>
+  <!-- Angular -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+</head>
+<body ng-controller="TodoCtrl">
+
+  <button ng-click="create()">Create To-do</button>
+
+  <table>
+    <tr ng-repeat="item in items">
+      <td>{{ item.text }}</td>
+      <td>{{ item.dueDate | date }}</td>
+      <td>{{ item.completed ? "Completed" : "Not completed" }}</td>
+    </tr>
+  </table>
+
+</body>
+  <script type="text/javascript" src="app.js"></script>
+  <script type="text/javascript" src="controllers/todo_ctrl.js"></script>
+</html>

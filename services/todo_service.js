@@ -26,22 +26,26 @@ todo.factory('todoService' , function() {
   },
   ];
 
-  stub.get = function() {
+  stub.getNewItem = function () {
+    return _newItem;
+  }
+
+  stub.getItems = function() {
     return _items;
   }
 
   stub.create = function(newItem) {
     var newerItem = {};
-    newerItem.text = newItem.text;
-    newerItem.dueDate = newItem.dueDate || new Date();
+    newerItem.text = _newItem.text;
+    newerItem.dueDate = _newItem.dueDate || new Date();
     newerItem.completed = false;
 
-    console.log("text: " + newItem.text);
-    console.log("Due Date: " + newItem.dueDate);
+    console.log("text: " + _newItem.text);
+    console.log("Due Date: " + _newItem.dueDate);
 
     _items.push(newerItem);
 
-    $scope.newItem = {};
+    _newItem = {};
   };
 
   stub.delete = function(item) {
@@ -58,5 +62,5 @@ todo.factory('todoService' , function() {
   };
 
 
-
+  return stub;
 });

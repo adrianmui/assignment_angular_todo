@@ -1,6 +1,6 @@
-todo.controller('TodoCtrl', ['$scope', '$window', 'todoService' function($scope, $window, todoService){
+todo.controller('TodoCtrl', ['$scope', '$window', 'todoService', function($scope, $window, todoService){
 
-  $scope.newItem = {};
+  $scope.newItem = todoService.getNewItem();
   $scope.showCompleted = true;
 
   $scope.items = todoService.get();

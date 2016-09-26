@@ -4,16 +4,34 @@
   <title>Angular To-Do</title>
   <!-- Angular -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
 </head>
 <body ng-controller="TodoCtrl">
 
-  <button ng-click="create()">Create To-do</button>
+  <br>
 
-  <table>
+  <form ng-submit="create(newItem)">
+    <input type="text" ng-model="newItem.text">
+    <input type="text"  ng-model="newItem.dueDate">
+    <input type="submit" class="btn btn-outline-info">
+  </form>
+
+  <br>
+
+  <button ng-click="clearCompleted()" class="btn-primary btn-lg active">
+    Clear Completed
+  </button>
+
+  <br>
+
+  <table class="table table-inverse">
     <tr ng-repeat="item in items">
       <td>{{ item.text }}</td>
       <td>{{ item.dueDate | date }}</td>
       <td>{{ item.completed ? "Completed" : "Not completed" }}</td>
+      <td><input type="checkbox" ng-model="item.completed"></td>
+      <td><a href="#" ng-click="delete(item)"> X </a> </td>
     </tr>
   </table>
 

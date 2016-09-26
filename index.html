@@ -21,10 +21,19 @@
 
   <button ng-click="toggleShowCompleted()" class="btn-outline-danger btn-lg">{{ showCompleted ? "Hide Completed" : "Show Completed" }}</button>
 
+  <label>Sort By:</label>
+  <select ng-model="sortBy" class="selectpicker">
+    <option value="0">None</option>
+    <option value="1">Completed on Top</option>
+    <option value="2">Completed on Bottom</option>
+    <option value="3">Due Date Descending</option>
+    <option value="4">Due Date Ascending</option>
+  </select>
+
   <br>
 
   <table class="table table-inverse">
-    <tr list-items ng-repeat="item in items | completedFilter: showCompleted" item = "item"></tr>
+    <tr list-items ng-repeat="item in items | completedFilter: showCompleted | sortFilter: sortBy" item = "item"></tr>
   </table>
 
   <button ng-click="clearCompleted()" class="btn-primary btn-lg active">
@@ -39,5 +48,6 @@
   <script type="text/javascript" src="controllers/todo_ctrl.js"></script>
   <script type="text/javascript" src="directives/list_items.js"></script>
   <script type="text/javascript" src="filters/completed_filter.js"></script>
+  <script type="text/javascript" src="filters/sort_filter.js"></script>
   <script type="text/javascript" src="services/todo_service.js"></script>
 </html>

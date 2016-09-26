@@ -1,8 +1,6 @@
 todo.factory('todoService' , function() {
   var stub = {};
 
-  var _newItem = {};
-
   var _items = [
   {
     text: "Get groceries from store",
@@ -26,26 +24,17 @@ todo.factory('todoService' , function() {
   },
   ];
 
-  stub.getNewItem = function () {
-    return _newItem;
-  }
-
   stub.getItems = function() {
     return _items;
-  }
+  };
 
   stub.create = function(newItem) {
     var newerItem = {};
-    newerItem.text = _newItem.text;
-    newerItem.dueDate = _newItem.dueDate || new Date();
+    newerItem.text = newItem.text;
+    newerItem.dueDate = newItem.dueDate || new Date();
     newerItem.completed = false;
 
-    console.log("text: " + _newItem.text);
-    console.log("Due Date: " + _newItem.dueDate);
-
     _items.push(newerItem);
-
-    _newItem = {};
   };
 
   stub.delete = function(item) {

@@ -1,9 +1,9 @@
 todo.controller('TodoCtrl', ['$scope', '$window', 'todoService', function($scope, $window, todoService){
 
-  $scope.newItem = todoService.getNewItem();
+  $scope.newItem = {};
   $scope.showCompleted = true;
 
-  $scope.items = todoService.get();
+  $scope.items = todoService.getItems();
 
   $scope.clearCompleted = function() {
     todoService.clearCompleted();
@@ -19,6 +19,7 @@ todo.controller('TodoCtrl', ['$scope', '$window', 'todoService', function($scope
 
   $scope.create = function (newItem) {
     todoService.create(newItem);
+    $scope.newItem = {};
   };
 
 }]);
